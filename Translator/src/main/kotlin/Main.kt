@@ -9,7 +9,7 @@ import org.json.simple.JSONObject
 
 const val key = "trnsl.1.1.20190101T152106Z.0318f022e7877826.a5204a4d34e7b25435f86cf72e389870f7318dde"
 const val path = "https://translate.yandex.net/api/v1.5/tr.json/translate"
-const val lang = "en-ru"
+const val lang = "en-de"
 
 
 fun translatePhrase(phrase: String) : String {
@@ -25,8 +25,8 @@ fun translatePhrase(phrase: String) : String {
 
 
 fun main(args : Array<String>) {
-    println("Enter a phrase to translate")
+    println("Enter a phrase in english")
     val phrase = readLine() as String
-    println(translatePhrase(phrase))
+    println("The translation is:\n" + translatePhrase(phrase))
 
 }
