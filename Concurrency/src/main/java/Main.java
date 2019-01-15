@@ -5,6 +5,7 @@ import java.util.concurrent.*;
 
 public class Main {
 
+
     public static void main(String[] args) {
         final PriorityQueue<Integer> storage = new PriorityQueue<>();
         ScheduledExecutorService extractScheduler = Executors.newSingleThreadScheduledExecutor();
@@ -13,12 +14,12 @@ public class Main {
             synchronized (storage) {
                 if (storage.isEmpty()) {
                     Date date = new Date();
-                    System.out.println(date.toString()  + "Set is empty");
+                    System.out.println(date.toString()  + ": Set is empty");
                 } else {
                     int num = storage.poll();
                     Date date = new Date();
 
-                    System.out.println(date.toString() + num);
+                    System.out.println(date.toString() + ":" + num);
                 }
             }
         };
@@ -26,9 +27,14 @@ public class Main {
             while(true) {
                 Scanner in = new Scanner(System.in);
                 System.out.print("Input a number: ");
-                int num = in.nextInt();
+                String num = in.nextLine();
+
                 synchronized (storage) {
-                    storage.add(num);
+                    try {
+                        storage.add(IntRecognizer.recognize(num));
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
                 }
             }
         };

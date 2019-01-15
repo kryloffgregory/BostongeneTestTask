@@ -27,6 +27,15 @@ fun translatePhrase(phrase: String) : String {
 fun main(args : Array<String>) {
     println("Enter a phrase in english")
     val phrase = readLine() as String
-    println("The translation is:\n" + translatePhrase(phrase))
+    if(phrase=="")
+    {
+        println("The phrase is empty")
+        return
+    }
+    try {
+        println("The translation is:\n" + translatePhrase(phrase))
+    } catch (e : Exception) {
+        println("Something went wrong while connecting to Yandex Translate API")
+    }
 
 }
